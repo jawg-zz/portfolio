@@ -6,7 +6,7 @@ export default defineConfig({
     format: 'file'
   },
   server: {
-    port: 4321,
+    port: 3000,
     host: true
   }
 });
