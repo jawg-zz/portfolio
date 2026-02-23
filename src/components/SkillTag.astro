@@ -1,0 +1,33 @@
+---
+const { name, icon } = Astro.props;
+---
+
+<span class="skill-tag">
+  {icon && <span class="icon">{icon}</span>}
+  {name}
+</span>
+
+<style>
+  .skill-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-subtle);
+    padding: 0.6rem 1rem;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    transition: all 0.3s ease;
+  }
+
+  .skill-tag:hover {
+    border-color: var(--border-accent);
+    color: var(--text-primary);
+    transform: translateY(-2px);
+  }
+
+  .icon {
+    font-size: 1.1rem;
+  }
+</style>

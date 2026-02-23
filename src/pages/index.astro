@@ -1,0 +1,476 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import SkillTag from '../components/SkillTag.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+
+const skills = [
+  { name: 'TypeScript', icon: '⚡' },
+  { name: 'React', icon: '⚛️' },
+  { name: 'Node.js', icon: '🟢' },
+  { name: 'Python', icon: '🐍' },
+  { name: 'PostgreSQL', icon: '🐘' },
+  { name: 'AWS', icon: '☁️' },
+  { name: 'Docker', icon: '🐳' },
+  { name: 'GraphQL', icon: '◼️' },
+];
+
+const projects = [
+  {
+    title: 'CloudSync Platform',
+    description: 'Real-time data synchronization service handling 10M+ daily transactions with sub-100ms latency. Built distributed architecture on AWS.',
+    tags: ['TypeScript', 'AWS', 'WebSockets', 'Redis'],
+    link: '#',
+    year: '2024'
+  },
+  {
+    title: 'AI Analytics Dashboard',
+    description: 'ML-powered business intelligence platform processing petabytes of data. Reduced query times by 90% through intelligent caching.',
+    tags: ['Python', 'React', 'PostgreSQL', 'TensorFlow'],
+    link: '#',
+    year: '2023'
+  },
+  {
+    title: 'E-Commerce Microservices',
+    description: 'Scalable e-commerce backend serving 500K+ users. Implemented event-driven architecture with Kafka and Kubernetes orchestration.',
+    tags: ['Node.js', 'Kubernetes', 'Kafka', 'MongoDB'],
+    link: '#',
+    year: '2023'
+  },
+  {
+    title: 'DevOps Automation Suite',
+    description: 'CI/CD pipeline automation reducing deployment time by 85%. Integrated security scanning and compliance checks into workflows.',
+    tags: ['Go', 'Docker', 'Terraform', 'GitHub Actions'],
+    link: '#',
+    year: '2022'
+  }
+];
+---
+
+<Layout>
+  <Header />
+  
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <p class="hero-greeting">Hello, I'm</p>
+          <h1 class="hero-name">Alex Chen</h1>
+          <p class="hero-title">Senior Fullstack Engineer</p>
+          <p class="hero-description">
+            Building scalable web applications and distributed systems for over 8 years. 
+            Passionate about clean architecture, performance optimization, and developer experience.
+          </p>
+          <div class="hero-cta">
+            <a href="#projects" class="btn btn-primary">View My Work</a>
+            <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="code-block">
+            <div class="code-header">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+            </div>
+            <pre class="code-content"><code><span class="keyword">const</span> <span class="variable">engineer</span> = {'{'}
+  <span class="property">role</span>: <span class="string">"Senior Fullstack"</span>,
+  <span class="property">focus</span>: [<span class="string">"Scalable Systems"</span>, <span class="string">"Cloud Architecture"</span>],
+  <span class="property">passion</span>: <span class="string">"Building Great Products"</span>,
+  <span class="property">available</span>: <span class="boolean">true</span>
+{'}'};</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="about">
+      <div class="container">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+          <div class="about-text">
+            <p>
+              I'm a Senior Fullstack Engineer with expertise in building high-performance web applications 
+              and distributed systems. My work spans from frontend experiences to backend architecture, 
+              always focusing on scalability and maintainability.
+            </p>
+            <p>
+              Currently, I specialize in cloud-native development, microservices architecture, and 
+              real-time data processing. I believe in writing clean, testable code and fostering 
+              collaborative team environments.
+            </p>
+          </div>
+          <div class="about-stats">
+            <div class="stat">
+              <span class="stat-number">8+</span>
+              <span class="stat-label">Years Experience</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">50+</span>
+              <span class="stat-label">Projects Delivered</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">10M+</span>
+              <span class="stat-label">Users Served</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="skills">
+      <div class="container">
+        <h2 class="section-title">Skills & Technologies</h2>
+        <div class="skills-grid">
+          {skills.map(skill => (
+            <SkillTag name={skill.name} icon={skill.icon} />
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="projects">
+      <div class="container">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="projects-grid">
+          {projects.map(project => (
+            <ProjectCard 
+              title={project.title}
+              description={project.description}
+              tags={project.tags}
+              link={project.link}
+              year={project.year}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="container">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-content">
+          <p class="contact-text">
+            I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
+          </p>
+          <a href="mailto:alex@example.com" class="btn btn-primary">alex@example.com</a>
+          <div class="social-links">
+            <a href="#" class="social-link">GitHub</a>
+            <a href="#" class="social-link">LinkedIn</a>
+            <a href="#" class="social-link">Twitter</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2024 Alex Chen. Built with passion.</p>
+    </div>
+  </footer>
+</Layout>
+
+<style>
+  main {
+    position: relative;
+    z-index: 2;
+  }
+
+  section {
+    padding: 6rem 0;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 3rem;
+    position: relative;
+    display: inline-block;
+  }
+
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: var(--accent-gradient);
+    border-radius: 2px;
+  }
+
+  /* Hero */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 5rem;
+  }
+
+  .hero .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .hero-greeting {
+    font-family: var(--font-mono);
+    color: var(--accent-primary);
+    margin-bottom: 1rem;
+  }
+
+  .hero-name {
+    font-size: 4rem;
+    font-weight: 700;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-title {
+    font-size: 1.5rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-description {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    max-width: 500px;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.9rem 2rem;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .btn-primary {
+    background: var(--accent-gradient);
+    color: white;
+    border: none;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px -10px rgba(99, 102, 241, 0.5);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--border-subtle);
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--accent-primary);
+  }
+
+  .code-block {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .code-header {
+    display: flex;
+    gap: 6px;
+    padding: 1rem;
+    background: var(--bg-tertiary);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+
+  .dot.red { background: #ff5f56; }
+  .dot.yellow { background: #ffbd2e; }
+  .dot.green { background: #27c93f; }
+
+  .code-content {
+    padding: 1.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    line-height: 1.8;
+    overflow-x: auto;
+  }
+
+  .keyword { color: var(--accent-secondary); }
+  .variable { color: var(--accent-tertiary); }
+  .property { color: var(--accent-primary); }
+  .string { color: #22c55e; }
+  .boolean { color: #f59e0b; }
+
+  /* About */
+  .about-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .about-text p {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+  }
+
+  .about-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .stat-number {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .stat-label {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+  }
+
+  /* Skills */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 1rem;
+  }
+
+  /* Projects */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 2rem;
+  }
+
+  /* Contact */
+  .contact-content {
+    max-width: 600px;
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .contact-text {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+
+  .contact-content .btn {
+    margin-bottom: 2rem;
+  }
+
+  .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .social-link {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    transition: color 0.2s ease;
+  }
+
+  .social-link:hover {
+    color: var(--accent-primary);
+  }
+
+  /* Footer */
+  .footer {
+    padding: 2rem 0;
+    border-top: 1px solid var(--border-subtle);
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .hero .container {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+
+    .hero-name {
+      font-size: 3rem;
+    }
+
+    .hero-description {
+      margin: 0 auto 2rem;
+    }
+
+    .hero-cta {
+      justify-content: center;
+    }
+
+    .hero-visual {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .about-content {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+
+    .about-stats {
+      flex-direction: row;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .hero-name {
+      font-size: 2.25rem;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+    }
+
+    .hero-cta {
+      flex-direction: column;
+    }
+
+    .about-stats {
+      flex-direction: column;
+    }
+  }
+</style>
