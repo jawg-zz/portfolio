@@ -1,5 +1,5 @@
 ---
-const { title, description, tags, link, year, gradient } = Astro.props;
+const { title, description, tags, link, year, gradient, image } = Astro.props;
 
 const gradients = [
   'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
@@ -11,10 +11,11 @@ const gradients = [
 ];
 
 const bgGradient = gradient || gradients[Math.floor(Math.random() * gradients.length)];
+const bgStyle = image ? `background-image: url('${image}');` : `background: ${bgGradient};`;
 ---
 
 <article class="project-card">
-  <div class="card-image" style={`background: ${bgGradient};`}>
+  <div class="card-image" style={bgStyle}>
     <div class="card-image-overlay"></div>
   </div>
   <div class="card-content">
@@ -59,6 +60,8 @@ const bgGradient = gradient || gradients[Math.floor(Math.random() * gradients.le
     height: 160px;
     position: relative;
     overflow: hidden;
+    background-size: cover;
+    background-position: center;
   }
 
   .card-image-overlay {
