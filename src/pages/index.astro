@@ -58,6 +58,13 @@ const projects = [
     year: '2022'
   }
 ];
+
+const badges = [
+  { name: 'AWS Solutions Architect', issuer: 'Amazon Web Services', year: '2024', icon: '☁️' },
+  { name: 'Google Cloud Professional', issuer: 'Google Cloud', year: '2023', icon: '🌐' },
+  { name: 'Certified Kubernetes', issuer: 'CNCF', year: '2023', icon: '⎈' },
+  { name: 'Meta Frontend Expert', issuer: 'Meta', year: '2022', icon: '⚛️' },
+];
 ---
 
 <Layout>
@@ -68,8 +75,10 @@ const projects = [
       <div class="container">
         <div class="hero-content">
           <p class="hero-greeting">Hello, I'm</p>
-          <h1 class="hero-name">George Moseti Gwaro</h1>
-          <p class="hero-title">Senior Fullstack Software Engineer</p>
+          <h1 class="hero-name">
+            <span class="typing-text" data-typing="George Moseti Gwaro">George Moseti Gwaro</span>
+          </h1>
+          <p class="hero-title typing-role" data-typing="Senior Fullstack Software Engineer">Senior Fullstack Software Engineer</p>
           <p class="hero-description">
             Building scalable web applications and distributed systems for over 8 years. 
             Passionate about clean architecture, performance optimization, and developer experience.
@@ -138,6 +147,23 @@ const projects = [
         <div class="skills-grid">
           {skills.map(skill => (
             <SkillTag name={skill.name} icon={skill.icon} />
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="badges">
+      <div class="container">
+        <h2 class="section-title">Achievements & Certifications</h2>
+        <div class="badges-grid">
+          {badges.map(badge => (
+            <div class="badge-card">
+              <span class="badge-icon">{badge.icon}</span>
+              <div class="badge-content">
+                <h3 class="badge-name">{badge.name}</h3>
+                <p class="badge-issuer">{badge.issuer} • {badge.year}</p>
+              </div>
+            </div>
           ))}
         </div>
       </div>
@@ -388,6 +414,64 @@ const projects = [
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
     gap: 1rem;
+  }
+
+  /* Badges */
+  .badges-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .badge-card {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+  }
+
+  .badge-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--border-accent);
+    box-shadow: 0 10px 30px -10px rgba(99, 102, 241, 0.2);
+  }
+
+  .badge-icon {
+    font-size: 2.5rem;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-tertiary);
+    border-radius: 12px;
+  }
+
+  .badge-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+  }
+
+  .badge-issuer {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  /* Typing Animation */
+  .typing-text::after,
+  .typing-role::after {
+    content: '|';
+    animation: blink 0.7s infinite;
+  }
+
+  @keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
   }
 
   /* Projects */
