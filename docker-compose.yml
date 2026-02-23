@@ -4,5 +4,3 @@ services:
     restart: unless-stopped
     expose:
       - "80"
-    volumes:
-      - ./html:/usr/share/nginx/html:ro
