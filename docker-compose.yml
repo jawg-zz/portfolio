@@ -1,7 +1,8 @@
 services:
   portfolio:
-    image: portfolio:latest
-    build: .
+    image: nginx:alpine
     restart: unless-stopped
-    ports:
-      - "3000:80"
+    expose:
+      - "80"
+    volumes:
+      - ./html:/usr/share/nginx/html:ro
