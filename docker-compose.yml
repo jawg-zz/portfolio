@@ -1,6 +1,12 @@
+version: "3.8"
 services:
   portfolio:
     image: nginx:alpine
     restart: unless-stopped
     expose:
       - "80"
+    volumes:
+      - portfolio-html:/usr/share/nginx/html
+
+volumes:
+  portfolio-html:
