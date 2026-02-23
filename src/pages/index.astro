@@ -3,6 +3,9 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import SkillTag from '../components/SkillTag.astro';
 import ProjectCard from '../components/ProjectCard.astro';
+import Experience from '../components/Experience.astro';
+import Testimonials from '../components/Testimonials.astro';
+import FloatingContact from '../components/FloatingContact.astro';
 
 const skills = [
   { name: 'TypeScript', icon: '⚡' },
@@ -140,6 +143,10 @@ const projects = [
       </div>
     </section>
 
+    <Experience />
+
+    <Testimonials />
+
     <section id="projects" class="projects">
       <div class="container">
         <h2 class="section-title">Featured Projects</h2>
@@ -174,6 +181,8 @@ const projects = [
       </div>
     </section>
   </main>
+
+  <FloatingContact />
 
   <footer class="footer">
     <div class="container">

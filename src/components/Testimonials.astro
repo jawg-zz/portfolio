@@ -1,0 +1,165 @@
+---
+const testimonials = [
+  {
+    quote: "George is an exceptional engineer who consistently delivers beyond expectations. His ability to architect scalable solutions while maintaining code quality is remarkable. He played a key role in transforming our legacy monolith into microservices.",
+    name: "Sarah Chen",
+    role: "VP of Engineering",
+    company: "TechCorp Inc.",
+    avatar: "SC"
+  },
+  {
+    quote: "I've worked with many engineers throughout my career, but George's combination of technical excellence and mentorship skills stands out. He doesn't just write code—he elevates the entire team's capabilities.",
+    name: "Marcus Johnson",
+    role: "CTO",
+    company: "StartupXYZ",
+    avatar: "MJ"
+  },
+  {
+    quote: "George has an incredible knack for breaking down complex problems into elegant solutions. His work on our real-time collaboration features was instrumental to our product's success. A true professional who cares about outcomes.",
+    name: "Emily Rodriguez",
+    role: "Product Director",
+    company: "Digital Agency Co.",
+    avatar: "ER"
+  }
+];
+---
+
+<section id="testimonials" class="testimonials">
+  <div class="container">
+    <h2 class="section-title">What People Say</h2>
+    <div class="testimonials-grid">
+      {testimonials.map((testimonial, index) => (
+        <article class="testimonial-card">
+          <div class="quote-icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V21"/>
+              <path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3"/>
+            </svg>
+          </div>
+          <blockquote class="quote">{testimonial.quote}</blockquote>
+          <div class="author">
+            <div class="avatar">{testimonial.avatar}</div>
+            <div class="author-info">
+              <div class="author-name">{testimonial.name}</div>
+              <div class="author-role">{testimonial.role} at {testimonial.company}</div>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonials {
+    padding: 6rem 0;
+    position: relative;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 4rem;
+    position: relative;
+    display: inline-block;
+  }
+
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: var(--accent-gradient);
+    border-radius: 2px;
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+  }
+
+  .testimonial-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-subtle);
+    border-radius: 20px;
+    padding: 2.5rem;
+    position: relative;
+    transition: all 0.4s ease;
+  }
+
+  .testimonial-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--border-accent);
+    box-shadow: 0 25px 50px -25px rgba(99, 102, 241, 0.2);
+  }
+
+  .quote-icon {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    color: var(--accent-primary);
+    opacity: 0.2;
+  }
+
+  .quote {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    font-style: italic;
+  }
+
+  .author {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--accent-gradient);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1rem;
+    color: white;
+    flex-shrink: 0;
+  }
+
+  .author-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .author-name {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 1rem;
+  }
+
+  .author-role {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  @media (max-width: 768px) {
+    .testimonials-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .testimonial-card {
+      padding: 2rem;
+    }
+
+    .quote {
+      font-size: 0.95rem;
+    }
+  }
+</style>

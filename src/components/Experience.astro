@@ -1,0 +1,245 @@
+---
+const experiences = [
+  {
+    company: 'TechCorp Inc.',
+    location: 'San Francisco, CA',
+    role: 'Senior Fullstack Engineer',
+    period: '2022 - Present',
+    highlights: [
+      'Led development of a distributed system handling 10M+ daily requests',
+      'Architected microservices migration reducing latency by 60%',
+      'Mentored team of 5 junior engineers, establishing code review standards',
+      'Implemented CI/CD pipelines reducing deployment time by 85%'
+    ]
+  },
+  {
+    company: 'StartupXYZ',
+    location: 'Austin, TX',
+    role: 'Fullstack Developer',
+    period: '2020 - 2022',
+    highlights: [
+      'Built real-time collaboration features using WebSockets',
+      'Developed ML-powered recommendation engine increasing user engagement by 40%',
+      'Designed RESTful APIs serving 500K+ users',
+      'Optimized database queries improving response times by 70%'
+    ]
+  },
+  {
+    company: 'Digital Agency Co.',
+    location: 'New York, NY',
+    role: 'Software Engineer',
+    period: '2018 - 2020',
+    highlights: [
+      'Developed responsive web applications for 20+ enterprise clients',
+      'Integrated third-party APIs including payment gateways and analytics',
+      'Reduced page load times by 50% through performance optimization',
+      'Collaborated with design teams to implement pixel-perfect UIs'
+    ]
+  }
+];
+---
+
+<section id="experience" class="experience">
+  <div class="container">
+    <h2 class="section-title">Work Experience</h2>
+    <div class="timeline">
+      {experiences.map((exp, index) => (
+        <article class="timeline-item">
+          <div class="timeline-marker">
+            <div class="marker-dot"></div>
+            {index < experiences.length - 1 && <div class="marker-line"></div>}
+          </div>
+          <div class="timeline-content">
+            <div class="exp-header">
+              <div class="exp-role">{exp.role}</div>
+              <span class="exp-period">{exp.period}</span>
+            </div>
+            <div class="exp-company">
+              <span class="company-name">{exp.company}</span>
+              <span class="company-location">{exp.location}</span>
+            </div>
+            <ul class="exp-highlights">
+              {exp.highlights.map(highlight => (
+                <li>{highlight}</li>
+              ))}
+            </ul>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .experience {
+    padding: 6rem 0;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 4rem;
+    position: relative;
+    display: inline-block;
+  }
+
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: var(--accent-gradient);
+    border-radius: 2px;
+  }
+
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    gap: 2rem;
+  }
+
+  .timeline-marker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .marker-dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--accent-gradient);
+    border: 3px solid var(--bg-primary);
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
+    flex-shrink: 0;
+  }
+
+  .marker-line {
+    width: 2px;
+    flex: 1;
+    min-height: 60px;
+    background: linear-gradient(to bottom, var(--accent-primary), transparent);
+    margin-top: 0.5rem;
+  }
+
+  .timeline-content {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-subtle);
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    transition: all 0.3s ease;
+  }
+
+  .timeline-content:hover {
+    border-color: var(--border-accent);
+    transform: translateX(8px);
+    box-shadow: 0 10px 40px -10px rgba(99, 102, 241, 0.15);
+  }
+
+  .exp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .exp-role {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .exp-period {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--accent-primary);
+    background: rgba(99, 102, 241, 0.1);
+    padding: 0.35rem 0.75rem;
+    border-radius: 20px;
+  }
+
+  .exp-company {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .company-name {
+    font-weight: 500;
+    color: var(--text-secondary);
+  }
+
+  .company-location {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+
+  .company-location::before {
+    content: '•';
+    margin-right: 0.75rem;
+  }
+
+  .exp-highlights {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .exp-highlights li {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    padding-left: 1.5rem;
+    position: relative;
+  }
+
+  .exp-highlights li::before {
+    content: '▹';
+    position: absolute;
+    left: 0;
+    color: var(--accent-primary);
+  }
+
+  @media (max-width: 768px) {
+    .timeline-item {
+      grid-template-columns: 30px 1fr;
+      gap: 1.25rem;
+    }
+
+    .timeline-content {
+      padding: 1.5rem;
+    }
+
+    .exp-header {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .exp-role {
+      font-size: 1.15rem;
+    }
+
+    .exp-company {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.25rem;
+    }
+
+    .company-location::before {
+      display: none;
+    }
+  }
+</style>

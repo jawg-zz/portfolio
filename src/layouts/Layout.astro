@@ -11,9 +11,33 @@
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
+  <div class="loader">
+    <div class="loader-content">
+      <div class="loader-logo">
+        <span class="loader-text">GMG</span>
+      </div>
+      <div class="loader-bar">
+        <div class="loader-progress"></div>
+      </div>
+    </div>
+  </div>
   <div class="bg-pattern"></div>
   <div class="noise-overlay"></div>
+  <div class="gradient-orb orb-1"></div>
+  <div class="gradient-orb orb-2"></div>
+  <div class="gradient-orb orb-3"></div>
   <slot />
+  <script>
+    window.addEventListener('load', () => {
+      const loader = document.querySelector('.loader');
+      setTimeout(() => {
+        loader.classList.add('loaded');
+        setTimeout(() => {
+          loader.remove();
+        }, 600);
+      }, 1200);
+    });
+  </script>
 </body>
 </html>
 

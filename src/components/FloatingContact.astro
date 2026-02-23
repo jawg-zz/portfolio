@@ -1,0 +1,97 @@
+---
+---
+
+<a href="#contact" class="floating-contact" aria-label="Contact Me">
+  <span class="contact-text">Let's Talk</span>
+  <span class="contact-icon">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+    </svg>
+  </span>
+  <span class="pulse-ring"></span>
+</a>
+
+<style>
+  .floating-contact {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 90;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.9rem 1.5rem;
+    background: var(--accent-gradient);
+    border-radius: 50px;
+    color: white;
+    font-weight: 600;
+    font-size: 0.95rem;
+    box-shadow: 0 10px 30px -10px rgba(99, 102, 241, 0.5);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-decoration: none;
+  }
+
+  .floating-contact:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 15px 40px -10px rgba(99, 102, 241, 0.6);
+  }
+
+  .contact-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+  }
+
+  .floating-contact:hover .contact-icon {
+    background: rgba(255, 255, 255, 0.3);
+    transform: rotate(-10deg);
+  }
+
+  .contact-text {
+    display: block;
+  }
+
+  .pulse-ring {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 50px;
+    border: 2px solid var(--accent-primary);
+    animation: pulse 2s ease-out infinite;
+  }
+
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+      opacity: 0.8;
+    }
+    100% {
+      transform: scale(1.15);
+      opacity: 0;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .floating-contact {
+      bottom: 1.5rem;
+      right: 1.5rem;
+      padding: 1rem;
+      border-radius: 50%;
+    }
+
+    .contact-text {
+      display: none;
+    }
+
+    .pulse-ring {
+      border-radius: 50%;
+    }
+  }
+</style>
