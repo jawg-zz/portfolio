@@ -1,8 +1,22 @@
 ---
-const { title, description, tags, link, year } = Astro.props;
+const { title, description, tags, link, year, gradient } = Astro.props;
+
+const gradients = [
+  'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+  'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+  'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
+  'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
+  'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
+  'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)',
+];
+
+const bgGradient = gradient || gradients[Math.floor(Math.random() * gradients.length)];
 ---
 
 <article class="project-card">
+  <div class="card-image" style={`background: ${bgGradient};`}>
+    <div class="card-image-overlay"></div>
+  </div>
   <div class="card-content">
     <span class="year">{year}</span>
     <h3 class="title">
@@ -31,15 +45,33 @@ const { title, description, tags, link, year } = Astro.props;
     background: var(--bg-secondary);
     border: 1px solid var(--border-subtle);
     border-radius: 16px;
-    padding: 2rem;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .project-card:hover {
     transform: translateY(-4px);
     border-color: var(--border-accent);
     box-shadow: 0 20px 40px -20px rgba(99, 102, 241, 0.2);
+  }
+
+  .card-image {
+    height: 160px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card-image-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 50%, var(--bg-secondary) 100%);
+  }
+
+  .card-content {
+    padding: 2rem;
+    padding-top: 0;
+    margin-top: -2rem;
+    position: relative;
   }
 
   .card-glow {
