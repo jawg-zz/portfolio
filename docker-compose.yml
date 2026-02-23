@@ -1,12 +1,11 @@
 version: "3.8"
 services:
   portfolio:
-    image: nginx:alpine
+    image: minio/static:linux-amd64
     restart: unless-stopped
     expose:
-      - "80"
+      - "8080"
     volumes:
-      - portfolio-html:/usr/share/nginx/html
+      - ./html:/public
 
-volumes:
-  portfolio-html:
+volumes: {}
