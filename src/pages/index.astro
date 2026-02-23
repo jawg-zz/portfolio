@@ -1,0 +1,207 @@
+---
+const title = "George";
+const subtitle = "Developer & Builder";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <div class="badge">
+        <span class="dot"></span>
+        Available for work
+      </div>
+      <h1>Hi, I'm <span class="gradient">{title}</span></h1>
+      <p class="subtitle">{subtitle}</p>
+    </section>
+
+    <section class="about">
+      <h2>About Me</h2>
+      <p>I build modern web applications with a focus on user experience and clean code. Passionate about creating elegant solutions to complex problems.</p>
+    </section>
+
+    <section class="skills">
+      <h2>Skills</h2>
+      <div class="skill-grid">
+        <div class="skill">Frontend</div>
+        <div class="skill">Backend</div>
+        <div class="skill">DevOps</div>
+        <div class="skill">APIs</div>
+      </div>
+    </section>
+
+    <section class="contact">
+      <h2>Get In Touch</h2>
+      <a href="mailto:george@example.com" class="btn">Say Hello</a>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 {title}</p>
+  </footer>
+</body>
+</html>
+
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --card: #12121a;
+    --accent: #6366f1;
+    --text: #f8fafc;
+    --text-muted: #94a3b8;
+    --border: #1e293b;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+    background-image: 
+      radial-gradient(ellipse at top right, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+      radial-gradient(ellipse at bottom left, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+  }
+
+  main {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+  }
+
+  .hero {
+    text-align: center;
+    padding: 4rem 0;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    background: #22c55e;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+
+  h1 {
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    font-weight: 800;
+    margin-bottom: 1rem;
+    line-height: 1.1;
+  }
+
+  .gradient {
+    background: linear-gradient(135deg, var(--accent), #8b5cf6, #ec4899);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .subtitle {
+    font-size: 1.25rem;
+    color: var(--text-muted);
+  }
+
+  section {
+    padding: 3rem 0;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text);
+  }
+
+  p {
+    color: var(--text-muted);
+    font-size: 1rem;
+  }
+
+  .about p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+  }
+
+  .skill-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .skill {
+    padding: 0.5rem 1rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+  }
+
+  .skill:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  .contact {
+    text-align: center;
+    padding: 4rem 0;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 0.875rem 2rem;
+    background: var(--accent);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s;
+    box-shadow: 0 0 30px rgba(99, 102, 241, 0.3);
+  }
+
+  .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 50px rgba(99, 102, 241, 0.4);
+  }
+
+  footer {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    border-top: 1px solid var(--border);
+  }
+</style>

@@ -1,11 +1,7 @@
 version: "3.8"
 services:
   portfolio:
-    image: minio/static:linux-amd64
+    build: .
     restart: unless-stopped
     expose:
-      - "8080"
-    volumes:
-      - ./html:/public
-
-volumes: {}
+      - "3000"
