@@ -28,6 +28,7 @@
   <div class="scroll-progress"></div>
   <div class="custom-cursor"></div>
   <div class="cursor-dot"></div>
+  <div class="cursor-label"></div>
   
   <div class="bg-pattern"></div>
   <div class="noise-overlay"></div>
@@ -209,10 +210,15 @@
       
       const cursor = document.querySelector('.custom-cursor');
       const dot = document.querySelector('.cursor-dot');
+      const label = document.querySelector('.cursor-label');
       cursor.style.left = e.clientX + 'px';
       cursor.style.top = e.clientY + 'px';
       dot.style.left = e.clientX + 'px';
       dot.style.top = e.clientY + 'px';
+      if (label) {
+        label.style.left = e.clientX + 'px';
+        label.style.top = (e.clientY + 30) + 'px';
+      }
     });
 
     document.addEventListener('mouseleave', () => {
@@ -226,7 +232,45 @@
     });
 
     const cursor = document.querySelector('.custom-cursor');
-    document.querySelectorAll('a, button, .project-card, .skill-tag').forEach(el => {
+    const cursorLabel = document.querySelector('.cursor-label');
+    
+    // Industry icons for different sections
+    const industryIcons = {
+      'about': { icon: '👤', label: 'About' },
+      'services': { icon: '🛠️', label: 'Services' },
+      'projects': { icon: '💼', label: 'Projects' },
+      'skills': { icon: '⚡', label: 'Skills' },
+      'contact': { icon: '📬', label: 'Contact' }
+    };
+
+    function updateCursorLabel(sectionId) {
+      if (!cursorLabel) return;
+      if (sectionId && industryIcons[sectionId]) {
+        cursorLabel.innerHTML = `${industryIcons[sectionId].icon} ${industryIcons[sectionId].label}`;
+        cursorLabel.classList.add('active');
+      } else {
+        cursorLabel.classList.remove('active');
+      }
+    }
+
+    // Track which section is currently in view for cursor label
+    const sections = document.querySelectorAll('section[id]');
+    const observerOptions = {
+      threshold: 0.5
+    };
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          updateCursorLabel(entry.target.id);
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach(section => sectionObserver.observe(section));
+
+    // Add hover effects for interactive elements
+    document.querySelectorAll('a, button, .project-card, .service-card, .skill-tag, .badge-card').forEach(el => {
       el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
       el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
     });
@@ -533,6 +577,28 @@
     pointer-events: none;
     z-index: 10001;
     transform: translate(-50%, -50%);
+  }
+
+  .cursor-label {
+    position: fixed;
+    padding: 0.5rem 1rem;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-accent);
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    pointer-events: none;
+    z-index: 10000;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    white-space: nowrap;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .cursor-label.active {
+    opacity: 1;
   }
 
   #particle-canvas {
